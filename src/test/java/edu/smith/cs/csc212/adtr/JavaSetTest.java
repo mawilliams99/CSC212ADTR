@@ -1,9 +1,13 @@
 package edu.smith.cs.csc212.adtr;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Set;
 
 import org.junit.Test;
 
+import edu.smith.cs.csc212.adtr.real.JavaList;
 import edu.smith.cs.csc212.adtr.real.JavaSet;
 
 public class JavaSetTest {
@@ -14,6 +18,7 @@ public class JavaSetTest {
 		
 		assertEquals(empty.size(), 0);
 	}
+	@Test
 	public void testInsert() {
 		SetADT<String>  object = new JavaSet<>();
 		
@@ -22,6 +27,7 @@ public class JavaSetTest {
 		
 		assertEquals(object.size(), 1);
 	}
+	@Test
 	public void testContains () {
 		SetADT<String>  object = new JavaSet<>();
 		SetADT<String>  object2 = new JavaSet<>();
@@ -31,6 +37,7 @@ public class JavaSetTest {
 		
 		assertEquals(object.contains("1"), object2.contains("1"));
 	}
+	@Test
 	public void testRemove () {
 		SetADT<String>  object = new JavaSet<>();
 		
@@ -39,19 +46,22 @@ public class JavaSetTest {
 		
 		assertEquals(object.size(), 0);
 	}
+	@Test
 	public void toList () {
 		SetADT<String>  object = new JavaSet<>();
 		
-		object.toList(); 
+		ListADT<String> objAsList = object.toList(); 
 		
-		assertEquals(object, List);
+		assertTrue(objAsList instanceof ListADT);
+		assertEquals(objAsList.size(), object.size());
 	}
+	@Test
 	public void toJava () {
 		SetADT<String>  object = new JavaSet<>();
 		
-		object.toJava(); 
+		Set<String> jSet = object.toJava(); 
 		
-		assertEquals(object, );
+		assertEquals(jSet.size(), object.size());
 	}
 	
 	
